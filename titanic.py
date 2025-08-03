@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 data =  pd.read_csv('train.csv')
 
@@ -14,7 +15,7 @@ data['Sexo'].replace({'male': 'homen',
 ## Primeira letra da cabine ou nulo
 data['Cabine'] = data['Cabine'].apply(lambda x: x[0] if pd.notnull(x) else np.nan)
 
-print(data['Cabine'].head())
+# print(data['Cabine'].head())
 
 
 #Histograma
@@ -24,7 +25,7 @@ print(data['Cabine'].head())
 #plt.xlabel('Idade')
 #plt.show()
 
-print(data['Classe'].unique())
+# print(data['Classe'].unique())
 
 #plt.hist(data['Classe'])
 #plt.title('Distribuição de idades')
@@ -48,14 +49,24 @@ print(data['Classe'].unique())
 #plt.show()
 
 # Subplot 2
-f, ax = plt.subplots(1, 2, figsize=(6, 3), dpi=150) # Uma linha, duas colunas, tamnho da imagem, qualidade
+# f, ax = plt.subplots(1, 2, figsize=(6, 3), dpi=150) # Uma linha, duas colunas, tamnho da imagem, qualidade
 # ax[i] sendo i um inteiro representando o plot
 
 # plot 1
-ax[0].hist(data['Idade'].dropna())
-ax[0].set_title('Distribuição das idades')
+# ax[0].hist(data['Idade'].dropna())
+# ax[0].set_title('Distribuição das idades')
 
 # Plot 2
-ax[1].hist(data['Classe'])
-ax[1].set_title('Distribuição das classes')
+# ax[1].hist(data['Classe'])
+# ax[1].set_title('Distribuição das classes')
+# plt.show()
+
+
+# Seaborn
+#Faz o matplotlib ser mais automatizado
+
+print(data['Sobreviveu'].value_counts()) # Contar ocerrenci de valores
+
+f, ax = plt.subplots(1, 2, figsize=(18, 5)) # Uma linha, duas colunas, tamnho da imagem
+data['Sobreviveu'].value_counts().plot.pie(ax=ax[0])
 plt.show()
