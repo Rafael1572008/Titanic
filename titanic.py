@@ -26,22 +26,36 @@ print(data['Cabine'].head())
 
 print(data['Classe'].unique())
 
-plt.hist(data['Classe'])
-plt.title('Distribuição de idades')
-plt.ylabel('Pessoas')
-plt.xlabel('Idade')
-plt.show()
+#plt.hist(data['Classe'])
+#plt.title('Distribuição de idades')
+#plt.ylabel('Pessoas')
+#plt.xlabel('Idade')
+#plt.show()
 
 # Visualizar os dois graficos
-plt.subplot(2, 1, 1) #linha, colunas, plot1
-plt.hist(data['Idade'].dropna())
-plt.title('Distribuição das rendas')
+# plt.figure(figsize=(10, 5)) # Tamanho da figura
+# plt.subplot(2, 1, 1) #linha, colunas, plot1
+# plt.hist(data['Idade'].dropna())
+# plt.title('Distribuição das rendas') # Titulo
 
 
-plt.subplot(2, 1, 2) #linha, colunas, plot1
-plt.hist(data['Classe'])
-plt.title('Distribuição das classes')
+#plt.subplot(2, 1, 2) #linha, colunas, plot1
+#plt.hist(data['Classe'])
+#plt.title('Distribuição das classes')
 
-plt.tight_layout() # Tirar uma distancia
+#plt.tight_layout() # Tirar uma distancia
 
+#plt.show()
+
+# Subplot 2
+f, ax = plt.subplots(1, 2, figsize=(6, 3), dpi=150) # Uma linha, duas colunas, tamnho da imagem, qualidade
+# ax[i] sendo i um inteiro representando o plot
+
+# plot 1
+ax[0].hist(data['Idade'].dropna())
+ax[0].set_title('Distribuição das idades')
+
+# Plot 2
+ax[1].hist(data['Classe'])
+ax[1].set_title('Distribuição das classes')
 plt.show()
