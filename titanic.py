@@ -70,18 +70,20 @@ print(data['Sobreviveu'].value_counts()) # Contar ocerrenci de valores
 # Contar a ocorrencia de sobrevivnetes e mostrar em grafioc e pizza
 
 # Sem o Seaborn
-f, ax = plt.subplots(1, 2, figsize=(18, 5)) # Uma linha, duas colunas, tamnho da imagem
-data['Classe'].value_counts().plot.pie(ax=ax[0], explode=[0.02,0.02, 0.02], autopct='%0.2f%%') # explode, distanciamento das fatias, autopct = mostrar em procentagem com 2 pontos flutuantes
-ax[0].set_ylabel('') # Renomear titulo y
+# f, ax = plt.subplots(1, 2, figsize=(18, 5)) # Uma linha, duas colunas, tamnho da imagem
+# data['Classe'].value_counts().plot.pie(ax=ax[0], explode=[0.02,0.02, 0.02], autopct='%0.2f%%') # explode, distanciamento das fatias, autopct = mostrar em procentagem com 2 pontos flutuantes
+# ax[0].set_ylabel('') # Renomear titulo y
 
 # Com o Seaborn
 
 # sns.countplot(x='Sobreviveu', data=data, ax=ax[1])
-ax[1].set_ylabel('') # Renomear titulo y
+# ax[1].set_ylabel('') # Renomear titulo y
 
 # Count plot and hub (Divisão)
-sns.countplot(x='Sobreviveu', hue='Sexo', data=data) # hue, Gera uma separação, o que vai ficar na legenda
+# sns.countplot(x='Sobreviveu', hue='Sexo', data=data) # hue, Gera uma separação, o que vai ficar na legenda
+#plt.show()
 
-# Boxplot
-
+# Boxplot (Onde a maioria dos dados estão concentrados)
+plt.figure(figsize=(5, 3), dpi=100)
+sns.boxplot(x = 'Classe', y='Idade', hue='Sexo', data=data) # Classe x idade separador por sexo, os eixos representão as disperção, outros dados
 plt.show()
