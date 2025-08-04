@@ -72,10 +72,16 @@ print(data['Sobreviveu'].value_counts()) # Contar ocerrenci de valores
 # Sem o Seaborn
 f, ax = plt.subplots(1, 2, figsize=(18, 5)) # Uma linha, duas colunas, tamnho da imagem
 data['Classe'].value_counts().plot.pie(ax=ax[0], explode=[0.02,0.02, 0.02], autopct='%0.2f%%') # explode, distanciamento das fatias, autopct = mostrar em procentagem com 2 pontos flutuantes
-ax[0].set_ylabel('')
+ax[0].set_ylabel('') # Renomear titulo y
 
 # Com o Seaborn
-sns.countplot(x='Sobreviveu', data=data, ax=ax[1])
-ax[1].set_ylabel('')
+
+# sns.countplot(x='Sobreviveu', data=data, ax=ax[1])
+ax[1].set_ylabel('') # Renomear titulo y
+
+# Count plot and hub (Divisão)
+sns.countplot(x='Sobreviveu', hue='Sexo', data=data) # hue, Gera uma separação, o que vai ficar na legenda
+
+# Boxplot
 
 plt.show()
