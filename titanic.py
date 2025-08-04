@@ -67,6 +67,15 @@ data['Cabine'] = data['Cabine'].apply(lambda x: x[0] if pd.notnull(x) else np.na
 
 print(data['Sobreviveu'].value_counts()) # Contar ocerrenci de valores
 
+# Contar a ocorrencia de sobrevivnetes e mostrar em grafioc e pizza
+
+# Sem o Seaborn
 f, ax = plt.subplots(1, 2, figsize=(18, 5)) # Uma linha, duas colunas, tamnho da imagem
-data['Sobreviveu'].value_counts().plot.pie(ax=ax[0])
+data['Classe'].value_counts().plot.pie(ax=ax[0], explode=[0.02,0.02, 0.02], autopct='%0.2f%%') # explode, distanciamento das fatias, autopct = mostrar em procentagem com 2 pontos flutuantes
+ax[0].set_ylabel('')
+
+# Com o Seaborn
+sns.countplot(x='Sobreviveu', data=data, ax=ax[1])
+ax[1].set_ylabel('')
+
 plt.show()
