@@ -90,5 +90,9 @@ print(data['Sobreviveu'].value_counts()) # Contar ocerrenci de valores
 
 # Violinplot
 
-sns.violinplot(x = 'Classe', y='Idade', hue='Sexo', data=data) # Mesmo que Boxplor, entretanto com mais detalhes, espessusa muda para representar a ocorrencia
+# sns.violinplot(x = 'Classe', y='Idade', hue='Sexo', data=data) # Mesmo que Boxplor, entretanto com mais detalhes, espessusa muda para representar a ocorrencia
+
+
+# FaceGrid com Hist
+g = sns.FacetGrid(data, col='Sobreviveu')
 plt.show()
