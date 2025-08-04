@@ -84,6 +84,11 @@ print(data['Sobreviveu'].value_counts()) # Contar ocerrenci de valores
 #plt.show()
 
 # Boxplot (Onde a maioria dos dados estão concentrados)
-plt.figure(figsize=(5, 3), dpi=100)
-sns.boxplot(x = 'Classe', y='Idade', hue='Sexo', data=data) # Classe x idade separador por sexo, os eixos representão as disperção, outros dados
+# plt.figure(figsize=(5, 3), dpi=100)
+# sns.boxplot(x = 'Classe', y='Idade', hue='Sexo', data=data) # Classe x idade separador por sexo, os eixos representão as disperção, outros dados
+
+
+# Violinplot
+
+sns.violinplot(x = 'Classe', y='Idade', hue='Sexo', data=data) # Mesmo que Boxplor, entretanto com mais detalhes, espessusa muda para representar a ocorrencia
 plt.show()
