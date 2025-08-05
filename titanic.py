@@ -98,10 +98,14 @@ print(data['Sobreviveu'].value_counts()) # Contar ocerrenci de valores
 # g.map(plt.hist, 'Idade', bins=18) # Sobrevivencia por idades
 
 # FaceGrid com Barplot
-g = sns.FacetGrid(data, row='Embarque', col='Sobreviveu') # 3 Portões de embarque x 2 opções de sobrevivencia
-g.map(sns.barplot, 'Sexo', 'Tarifa', alpha=0.5, ci=None) # Alpha, tranparencia. Ci, intevalo de confiança, precisão e certeza nos dados
+# g = sns.FacetGrid(data, row='Embarque', col='Sobreviveu') # 3 Portões de embarque x 2 opções de sobrevivencia
+# g.map(sns.barplot, 'Sexo', 'Tarifa', alpha=0.5, ci=None) # Alpha, tranparencia. Ci, intevalo de confiança, precisão e certeza nos dados
 
-# Mudar tamanho da imagem
-fig = plt.gcf()
-fig.set_size_inches(10, 6)
+## Mudar tamanho da imagem
+# fig = plt.gcf()
+# fig.set_size_inches(10, 6)
+
+# FaceGrid com Displot
+g = sns.FacetGrid(data, col='Sobreviveu', row='Classe' ,height=1.8, aspect=2.2) # Altura e largura
+g.map(sns.histplot, 'Idade', bins=20)
 plt.show()
