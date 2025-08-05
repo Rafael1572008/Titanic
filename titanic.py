@@ -106,6 +106,11 @@ print(data['Sobreviveu'].value_counts()) # Contar ocerrenci de valores
 # fig.set_size_inches(10, 6)
 
 # FaceGrid com Displot
-g = sns.FacetGrid(data, col='Sobreviveu', row='Classe' ,height=1.8, aspect=2.2) # Altura e largura
-g.map(sns.histplot, 'Idade', bins=20)
+# g = sns.FacetGrid(data, col='Sobreviveu', row='Classe' ,height=1.8, aspect=2.2) # Altura e largura
+# g.map(sns.histplot, 'Idade', bins=20)
+
+# Carplot (Outra visualização, mas com intevalos de confiança)
+sns.catplot(x='Embarque', y='Sobreviveu', data=data, kind='point') # Porcentagem de sobrevivencia por potão
+fig = plt.gcf()
+fig.set_size_inches(6, 3)
 plt.show()
