@@ -180,5 +180,24 @@ print(data['Sobreviveu'].value_counts())  # Conta quantos sobreviveram e quantos
 
 # Este gráfico mostra a correlação entre variáveis numéricas.
 
-sns.relplot(x='Tarifa', y='Idade', hue='Sexo', data=data, size='Tarifa', sizes=(40, 400)) # Relaciona Tarifa e Idade, separado por Sexo, tamanho do ponto indica valor da Tarifa
+# sns.relplot(x='Tarifa', y='Idade', hue='Sexo', data=data, size='Tarifa', sizes=(40, 400), alpha=0.7, palette='magma') # Relaciona Tarifa e Idade, separado por Sexo, tamanho do ponto indica valor da Tarifa
+# plt.show()
+
+
+# ===============================================
+# 14. Scatterplot – Correlação simples
+# ===============================================
+
+# Este gráfico mostra a correlação entre Idade e Tarifa, separado por Embarque.
+
+# sns.scatterplot(x='Idade', y='Tarifa', hue='Embarque', size='Idade', palette='Greens', data=data, sizes=(10, 200)) # Relaciona Idade e Tarifa, separado por Embarque, tamanho do ponto indica valor da Idade
+# plt.show()
+
+# ===============================================
+# 15. Pairplot – Matriz de Correlação Completa
+# ===============================================
+
+#
+
+sns.pairplot(data[['Tarifa', 'Idade', 'Classe', 'Sexo', 'Embarque']], hue='Classe') 
 plt.show()
