@@ -197,7 +197,14 @@ print(data['Sobreviveu'].value_counts())  # Conta quantos sobreviveram e quantos
 # 15. Pairplot – Matriz de Correlação Completa
 # ===============================================
 
-#
+# Este gráfico mostra a correlação entre várias variáveis numéricas e categóricas.
 
-sns.pairplot(data[['Tarifa', 'Idade', 'Classe', 'Sexo', 'Embarque']], hue='Classe') 
+# sns.pairplot(data[['Tarifa', 'Idade', 'Classe', 'Sexo', 'Embarque', 'Sobreviveu']], hue='Sobreviveu') 
+# plt.show()
+
+# ===============================================
+# jointplot – Correlação com Histograma (KDE)
+# ===============================================
+
+sns.jointplot(x='Idade', y='Tarifa',data=data, kind='kde', color='purple')
 plt.show()
