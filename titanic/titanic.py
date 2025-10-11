@@ -4,14 +4,18 @@
 
 import pandas as pd
 import numpy as np
+import matplotlib          # importa o módulo base
+matplotlib.use('TkAgg')    # define o backend gráfico antes do pyplot
 import matplotlib.pyplot as plt
 import seaborn as sns
+
 
 # ===============================================
 # 1. Carregar e preparar os dados
 # ===============================================
 
-data = pd.read_csv('train.csv')
+data = pd.read_csv('titanic/train.csv')  # sem os, leitura direta
+
 
 ## Renomear as colunas para português
 data.columns = [
@@ -203,8 +207,82 @@ print(data['Sobreviveu'].value_counts())  # Conta quantos sobreviveram e quantos
 # plt.show()
 
 # ===============================================
-# jointplot – Correlação com Histograma (KDE)
+# 16. jointplot – Correlação com Histograma
 # ===============================================
 
-sns.jointplot(x='Idade', y='Tarifa',data=data, kind='kde', color='purple')
-plt.show()
+# Mostra onde os dados estão mais concentrados (KDE)
+
+# sns.jointplot(x='Idade', y='Tarifa',data=data, kind='kde', color='purple') # Tarifa x Idade
+
+# Mostra onde os dados estão mais concentrados (REG - Regressão)
+
+# sns.jointplot(x='Idade', y='Tarifa',data=data, kind='reg', color='purple') # Tarifa x Idade
+# plt.show()
+
+# ===============================================
+# 17. Kdeplot – curva de densidade
+# ===============================================
+
+# 
+
+# plt.figure(figsize=(8,5), dpi=80)
+# sns.kdeplot(data['Idade'].loc[data['Classe']==1],
+#              shade=True, color='g', label='1 classe', alpha=0.7) # gráfico de densidade de idade pela primeira classe
+# sns.kdeplot(data['Idade'].loc[data['Classe']==2], 
+#             shade=True, color='deeppink', label='2 classe', alpha=0.7) # gráfico de densidade de idade pela primeira classe
+# sns.kdeplot(data['Idade'].loc[data['Classe']==3],
+#              shade=True, color='dodgerblue', label='3 classe', alpha=0.7) # gráfico de densidade de idade pela primeira classe
+# plt.title('Distribuição de Idade pela Classe')
+# plt.show()
+
+# ===============================================
+# 17. Catplot tipo 'Count'
+# ===============================================
+
+# Coorelações
+
+# sns.catplot(
+#     x='Sobreviveu', # eixo x
+#     col='Cabine',   # coluna
+#     data=data[['Sobreviveu', 'Cabine']].dropna(), # Dados
+#     kind='count',  # 
+#     height=3.5,    # Tamanho
+#     aspect=0.8,
+#     col_wrap=4,     # tenta separa em em 4x2
+#     palette='tab20'
+# )
+# plt.show()
+
+
+## Hearmap corr()
+
+# sns.heatmap(
+#     data[['Classe', 'Idade', 'Sobreviveu', 'Tarifa']].corr(), # Apenas dados numericos
+#     annot=True,  # Valores, relacionados
+#     cmap='Blues' # Paleta
+# )
+# plt.show()
+
+# ===============================================
+# 18. Plot - Randomico
+# ===============================================
+
+# x = np.random.normal(10, 1, 15) # 15 elementos | com media 10 e desvio padrão 1
+
+# plt.plot(x)
+# plt.show()
+
+
+## linspace
+
+# x = np.linspace(0, 20, 100) # Criando 1000 numeros igualmente espaçados
+
+# z = 5*x
+
+# y = 2*x**2 - 5*x+3 - 100 
+
+# plt.plot()
+
+# plt.plot(x, y, label='Plot 1')
+# plt.plot(x, z, label='Plot 2')
+# plt.show()
