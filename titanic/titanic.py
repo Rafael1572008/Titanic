@@ -241,17 +241,19 @@ print(data['Sobreviveu'].value_counts())  # Conta quantos sobreviveram e quantos
 
 # Coorelações
 
-# sns.catplot(
-#     x='Sobreviveu', # eixo x
-#     col='Cabine',   # coluna
-#     data=data[['Sobreviveu', 'Cabine']].dropna(), # Dados
-#     kind='count',  # 
-#     height=3.5,    # Tamanho
-#     aspect=0.8,
-#     col_wrap=4,     # tenta separa em em 4x2
-#     palette='tab20'
-# )
-# plt.show()
+sns.catplot(
+     x='Sobreviveu', # eixo x
+     col='Cabine',   # coluna
+     data=data[['Sobreviveu', 'Cabine']].dropna(), # Dados
+     kind='count',  # 
+     height=3.5,    # Tamanho
+     aspect=0.8,
+     col_wrap=4,     # tenta separa em em 4x2
+     palette='tab20'
+ )
+print(data)
+plt.show()
+
 
 
 ## Hearmap corr()
@@ -280,8 +282,6 @@ print(data['Sobreviveu'].value_counts())  # Conta quantos sobreviveram e quantos
 # z = 5*x
 
 # y = 2*x**2 - 5*x+3 - 100 
-
-# plt.plot()
 
 # plt.plot(x, y, label='Plot 1')
 # plt.plot(x, z, label='Plot 2')
