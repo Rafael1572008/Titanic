@@ -8,6 +8,8 @@ import matplotlib          # importa o módulo base
 matplotlib.use('TkAgg')    # define o backend gráfico antes do pyplot
 import matplotlib.pyplot as plt
 import seaborn as sns
+import datetime
+import locale
 
 
 # ===============================================
@@ -241,18 +243,18 @@ print(data['Sobreviveu'].value_counts())  # Conta quantos sobreviveram e quantos
 
 # Coorelações
 
-sns.catplot(
-     x='Sobreviveu', # eixo x
-     col='Cabine',   # coluna
-     data=data[['Sobreviveu', 'Cabine']].dropna(), # Dados
-     kind='count',  # 
-     height=3.5,    # Tamanho
-     aspect=0.8,
-     col_wrap=4,     # tenta separa em em 4x2
-     palette='tab20'
- )
-print(data)
-plt.show()
+# sns.catplot(
+#      x='Sobreviveu', # eixo x
+#      col='Cabine',   # coluna
+#      data=data[['Sobreviveu', 'Cabine']].dropna(), # Dados
+#      kind='count',  # 
+#      height=3.5,    # Tamanho
+#      aspect=0.8,
+#      col_wrap=4,     # tenta separa em em 4x2
+#      palette='tab20'
+# )
+# print(data)
+# plt.show()
 
 
 
@@ -286,3 +288,60 @@ plt.show()
 # plt.plot(x, y, label='Plot 1')
 # plt.plot(x, z, label='Plot 2')
 # plt.show()
+
+
+# ===============================================
+# 19. String para data (Strftime)
+# ===============================================
+
+# str_data_hora = '12/14/25 11:59:35'
+
+# convertido = datetime.datetime.strptime(str_data_hora, '%m/%d/%y %H:%M:%S') # String para data-hora
+
+
+# str_data = '12/14/25'
+
+# convertido_data = datetime.datetime.strptime(str_data, '%m/%d/%y').date() # String para data
+
+# print(convertido_data)
+
+
+
+# str_tempo = '11:59:35'
+# tempo = datetime.datetime.strptime(str_tempo, '%H:%M:%S').time() # String para tempo
+
+# print(tempo)
+
+locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')  # Define localidade para português do Brasil
+
+start = '01/01/25'
+end = '12/31/25'
+
+x = pd.date_range(start, end, freq='MS')# .strftime('%b') # Frequência mensal (MS - Month Start) + natuzalização do mês
+
+
+y = np.random.normal(10, 1, 12) # 12 elementos | com media 10 e desvio padrão 1
+
+print(y)
+
+# f, ax = plt.subplots(dpi=100)
+# ax.plot(x, y)
+# f.autofmt_xdate()  # Formata datas no eixo x
+# plt.show()
+
+
+data1 = pd.DataFrame({
+    'Data': x,
+    'Valor': y
+})
+
+data1.set_index('Data', inplace=True) # Definir a coluna Data como índice
+
+data1['Data String'] = data1.index.strftime('%d/%b/%y')  # Naturalização do mês
+
+
+data1['Data String'] = pd.to_datetime(data1['Data String'], format='%d/%b/%y') # tranforma coluna em datatime
+print(data1['Data String'])
+
+
+
