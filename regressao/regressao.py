@@ -84,4 +84,67 @@ print(data)
 plt.scatter(x, y)
 plt.plot(x, pred_manual, color='red')
 
-plt.show()
+# lt.show()
+
+
+# Coeficiente de determinação R²
+
+data['residuos'] = data['faturamento'] - data['predições']
+print(data)
+
+SQres = (data['residuos'] ** 2).sum()
+print(f'Soma dos residuos ao quadrado: {SQres}')
+
+
+media = data['faturamento'].mean()
+
+data['faturamento medio'] = media
+print(data)
+
+SQtot = ((data['faturamento'] - data['faturamento medio']) ** 2).sum()
+print(f'Soma total ao quadrado: {SQtot}')
+
+r_squared = 1 - (SQres / SQtot)
+print(f'R²: {r_squared.round(4)}')
+
+
+# RMSE
+rmse = (SQres / n) ** 0.5
+print(f'RMSE: {rmse.round(4)}')
+
+
+# Regra empírica, desvio padão de 68%
+# plt.plot(x, pred_manual, color='red')
+# plt.scatter(x, y)
+# plt.plot(x, pred_manual + rmse, color='green', linestyle='dashed')
+# plt.plot(x, pred_manual - rmse, color='green', linestyle='dashed')
+# plt.show()
+
+# Dois desvio padão de 95
+# plt.plot(x, pred_manual, color='red')
+# plt.scatter(x, y)
+# plt.plot(x, pred_manual + rmse, color='green', linestyle='dashed')
+# plt.plot(x, pred_manual - rmse, color='green', linestyle='dashed')
+# plt.show()
+
+# Dois desvio padão de 95
+# plt.plot(x, pred_manual, color='red')
+# plt.scatter(x, y)
+# plt.plot(x, pred_manual, color='red')
+# plt.plot(x, pred_manual + rmse, color='green', linestyle='dashed')
+# plt.plot(x, pred_manual - rmse, color='green', linestyle='dashed')
+# plt.plot(x, pred_manual + 2*rmse, color='purple', linestyle='dashed')
+# plt.plot(x, pred_manual - 2*rmse, color='purple', linestyle='dashed')
+# plt.show()
+
+# três desvio padão de 99,7%
+# plt.plot(x, pred_manual, color='red')
+# plt.scatter(x, y)
+# plt.plot(x, pred_manual, color='red')
+# plt.plot(x, pred_manual + rmse, color='green', linestyle='dashed')
+# plt.plot(x, pred_manual - rmse, color='green', linestyle='dashed')
+# plt.plot(x, pred_manual + 2*rmse, color='purple', linestyle='dashed')
+# plt.plot(x, pred_manual - 2*rmse, color='purple', linestyle='dashed')
+# plt.plot(x, pred_manual + 3*rmse, color='orange', linestyle='dashed')
+# plt.plot(x, pred_manual - 3*rmse, color='orange', linestyle='dashed')
+# plt.show()
