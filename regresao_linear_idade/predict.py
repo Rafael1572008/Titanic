@@ -82,3 +82,14 @@ titulos_traduzidos = {
 
 data['Titulo'] = data['Titulo'].map(titulos_traduzidos)
 print(data.shape)
+
+
+#Não usar nome nem bilhete
+data.drop(['Nome', 'Bilhete'], axis=1, inplace=True)
+
+
+# Averiguar informações do DataFrame
+print(data.info())
+
+# Engenharia de recursos - 2
+solterias_com_pais = data.loc[(data['Titulo'] == 'Solteira') & (data['PaisFilhos'] >= 1)]
